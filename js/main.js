@@ -2,29 +2,27 @@ import { getHeader } from "./components/header.js"
 import { getPageContainer } from "./components/pageContainer.js"
 
 
-import { getMainPage } from "./pages/main.js"
-import { getCatalogPage } from "./pages/catalog.js"
-import { getProductPage } from "./pages/product.js"
-import { getBasketPage } from "./pages/basket.js"
-
 const app = document.getElementById("app")
 
 const header = getHeader()
 const pageContainer = getPageContainer()
 
-export function navigation(page) {
+export async function navigation(page) {
     pageContainer.innerHTML = ""
     switch (page) {
         case "catalog":
-            const catalogPage = getCatalogPage()
+            const moduleCatalog = await import("./pages/catalog.js")
+            const catalogPage = moduleCatalog.getCatalogPage()
             pageContainer.append(catalogPage)
             break
         case "basket":
-            const basketPage = getBasketPage()
+            const moduleBasket = await import("./pages/basket.js")
+            const basketPage = moduleBasket.getBasketPage()
             pageContainer.append(basketPage)
             break
         default:
-            const mainPage = getMainPage()
+            const moduleMain = await import("./pages/main.js")
+            const mainPage = moduleMain.getMainPage()
             pageContainer.append(mainPage)
             break
     }
