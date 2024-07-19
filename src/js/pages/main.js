@@ -11,9 +11,9 @@ export function getMainPage() {
     list.classList.add("product-list", "list-reset")
 
     list.append(
-        getProductCard("Товар 1", 400),
-        getProductCard("Товар 2", 300),
-        getProductCard("Товар 3", 700)
+        getProductCard("Товар_1", 400),
+        getProductCard("Товар_2", 300),
+        getProductCard("Товар_3", 700)
     )
 
     page.append(mainTitle, list)

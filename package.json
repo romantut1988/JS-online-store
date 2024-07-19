@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/romantut1988/JS-online-store#readme",
   "dependencies": {
+    "navigo": "^8.11.1",
     "parcel": "^2.12.0"
   }
 }

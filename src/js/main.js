@@ -1,12 +1,13 @@
+import Navigo from "navigo";
 import { getHeader } from "./components/header.js"
 import { getPageContainer } from "./components/pageContainer.js"
 
 
 const app = document.getElementById("app")
 
-const router = new Navigo('/');
+export const router = new Navigo('/');
 
-const header = getHeader(router)
+const header = getHeader()
 const pageContainer = getPageContainer()
 
 router.on('/', async () => {
@@ -28,6 +29,13 @@ router.on('/basket', async () => {
     const moduleBasket = await import("./pages/basket.js")
     const basketPage = moduleBasket.getBasketPage()
     pageContainer.append(basketPage)
+});
+
+router.on('/product/:title', async ({ data }) => {
+    pageContainer.innerHTML = ""
+    const moduleProduct = await import("./pages/product.js")
+    const productPage = moduleProduct.getProductPage(data.title)
+    pageContainer.append(productPage)
 });
 
 router.resolve();

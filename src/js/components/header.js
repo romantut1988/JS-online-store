@@ -1,6 +1,6 @@
-// import { router } from "../main/js"
+import { router } from "../main"
 
-export function getHeader(router) {
+export function getHeader() {
     const header = document.createElement("header")
     header.classList.add("header")
 
