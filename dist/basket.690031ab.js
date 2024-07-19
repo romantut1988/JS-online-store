@@ -587,18 +587,27 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getBasketPage", ()=>getBasketPage);
-var _mainTitleJs = require("../components/mainTitle.js");
-var _descJs = require("../components/desc.js");
+var _main = require("/src/js/main");
+var _mainTitleJs = require("/src/js/components/mainTitle.js");
+var _descJs = require("/src/js/components/desc.js");
 function getBasketPage() {
     const page = document.createElement("div");
     page.classList.add("page", "basket-page", "container");
     const mainTitle = (0, _mainTitleJs.getMainTitle)("\u041A\u043E\u0440\u0437\u0438\u043D\u0430");
     const desc = (0, _descJs.getDesc)("\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435");
-    page.append(mainTitle, desc);
+    let linkOrder = document.createElement("a");
+    linkOrder.href = "/order";
+    linkOrder.classList.add("btn");
+    linkOrder.textContent = "\u041E\u0444\u043E\u0440\u043C\u043B\u0435\u043D\u0438\u0435 \u0437\u0430\u043A\u0430\u0437\u0430";
+    linkOrder.addEventListener("click", function(event) {
+        event.preventDefault();
+        (0, _main.router).navigate("/order");
+    });
+    page.append(mainTitle, desc, linkOrder);
     return page;
 }
 
-},{"../components/mainTitle.js":"1BNwr","../components/desc.js":"7kCFx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1BNwr":[function(require,module,exports) {
+},{"/src/js/components/mainTitle.js":"1BNwr","/src/js/components/desc.js":"7kCFx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/src/js/main":"1SICI"}],"1BNwr":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getMainTitle", ()=>getMainTitle);

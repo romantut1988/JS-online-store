@@ -1,5 +1,6 @@
-import { getMainTitle } from "../components/mainTitle.js"
-import { getDesc } from "../components/desc.js"
+import { router } from "/src/js/main"
+import { getMainTitle } from "/src/js/components/mainTitle.js"
+import { getDesc } from "/src/js/components/desc.js"
 
 export function getBasketPage() {
     const page = document.createElement("div")
@@ -8,6 +9,16 @@ export function getBasketPage() {
     const mainTitle = getMainTitle("Корзина")
     const desc = getDesc("Страница в разработке")
 
-    page.append(mainTitle, desc)
+    let linkOrder = document.createElement("a")
+    linkOrder.href = "/order"
+    linkOrder.classList.add("btn")
+    linkOrder.textContent = "Оформление заказа"
+
+    linkOrder.addEventListener("click", function (event) {
+        event.preventDefault()
+        router.navigate('/order');
+    })
+
+    page.append(mainTitle, desc, linkOrder)
     return page
 }

@@ -587,8 +587,8 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getCatalogPage", ()=>getCatalogPage);
-var _mainTitleJs = require("../components/mainTitle.js");
-var _descJs = require("../components/desc.js");
+var _mainTitleJs = require("/src/js/components/mainTitle.js");
+var _descJs = require("/src/js/components/desc.js");
 function getCatalogPage() {
     const page = document.createElement("div");
     page.classList.add("page", "catalog-page", "container");
@@ -598,7 +598,7 @@ function getCatalogPage() {
     return page;
 }
 
-},{"../components/mainTitle.js":"1BNwr","../components/desc.js":"7kCFx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1BNwr":[function(require,module,exports) {
+},{"/src/js/components/mainTitle.js":"1BNwr","/src/js/components/desc.js":"7kCFx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1BNwr":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getMainTitle", ()=>getMainTitle);

@@ -1,4 +1,4 @@
-import { router } from "../main"
+import { router } from "/src/js/main"
 
 export function getProductCard(title, price) {
     const item = document.createElement("li")

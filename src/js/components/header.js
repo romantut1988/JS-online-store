@@ -1,4 +1,4 @@
-import { router } from "../main"
+import { router } from "/src/js/main"
 
 export function getHeader() {
     const header = document.createElement("header")

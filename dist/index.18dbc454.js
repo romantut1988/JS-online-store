@@ -589,237 +589,54 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "router", ()=>router);
 var _navigo = require("navigo");
 var _navigoDefault = parcelHelpers.interopDefault(_navigo);
-var _headerJs = require("./components/header.js");
-var _pageContainerJs = require("./components/pageContainer.js");
+var _headerJs = require("/src/js/components/header.js");
+var _pageContainerJs = require("/src/js/components/pageContainer.js");
 const app = document.getElementById("app");
 const router = new (0, _navigoDefault.default)("/");
 const header = (0, _headerJs.getHeader)();
 const pageContainer = (0, _pageContainerJs.getPageContainer)();
 router.on("/", async ()=>{
     pageContainer.innerHTML = "";
-    const moduleMain = await require("41c6f9fed3a071b1");
+    const moduleMain = await require("76e43f5098be4a51");
     const mainPage = moduleMain.getMainPage();
     pageContainer.append(mainPage);
 });
 router.on("/catalog", async ()=>{
     pageContainer.innerHTML = "";
-    const moduleCatalog = await require("2fed088220d12df3");
+    const moduleCatalog = await require("c7fcb629e5c1095b");
     const catalogPage = moduleCatalog.getCatalogPage();
     pageContainer.append(catalogPage);
 });
+router.on("/product/:title", async ({ data })=>{
+    pageContainer.innerHTML = "";
+    const moduleProduct = await require("17e44ed2f03d434c");
+    const productPage = moduleProduct.getProductPage(data.title);
+    pageContainer.append(productPage);
+});
 router.on("/basket", async ()=>{
     pageContainer.innerHTML = "";
-    const moduleBasket = await require("e24587c59e4f16a");
+    const moduleBasket = await require("dd26f383febd9266");
     const basketPage = moduleBasket.getBasketPage();
     pageContainer.append(basketPage);
 });
-router.on("/product/:title", async ({ data })=>{
+router.on("/order", async ()=>{
+    router.navigate("/");
+    return;
     pageContainer.innerHTML = "";
-    const moduleProduct = await require("d772a986a2c25dfe");
-    const productPage = moduleProduct.getProductPage(data.title);
-    pageContainer.append(productPage);
+    const moduleOrder = await require("f5ba9bb331db9114");
+    const orderPage = moduleOrder.getOrderPage();
+    pageContainer.append(orderPage);
+});
+router.notFound(async ()=>{
+    pageContainer.innerHTML = "";
+    const moduleNotFound = await require("f1ed06dc22f0a59b");
+    const notFoundPage = moduleNotFound.getNotFoundPage();
+    pageContainer.append(notFoundPage);
 });
 router.resolve();
 app.append(header, pageContainer);
 
-},{"./components/header.js":"iODzc","./components/pageContainer.js":"6pXtL","41c6f9fed3a071b1":"dsI8R","2fed088220d12df3":"adHFQ","e24587c59e4f16a":"9L8T0","navigo":"fuSlc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","d772a986a2c25dfe":"33L2L"}],"iODzc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getHeader", ()=>getHeader);
-var _main = require("../main");
-function getHeader() {
-    const header = document.createElement("header");
-    header.classList.add("header");
-    const container = document.createElement("div");
-    container.classList.add("container", "header__container");
-    const nav = document.createElement("nav");
-    nav.classList.add("navigation");
-    let link1 = document.createElement("a");
-    link1.href = "/";
-    link1.classList.add("btn");
-    link1.textContent = "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430";
-    link1.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/");
-    });
-    let link2 = document.createElement("a");
-    link2.href = "/catalog";
-    link2.classList.add("btn");
-    link2.textContent = "\u041A\u0430\u0442\u0430\u043B\u043E\u0433";
-    link2.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/catalog");
-    });
-    let link3 = document.createElement("a");
-    link3.href = "/basket";
-    link3.classList.add("btn");
-    link3.textContent = "\u041A\u043E\u0440\u0437\u0438\u043D\u0430";
-    link3.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/basket");
-    });
-    nav.append(link1, link2, link3);
-    container.append(nav);
-    header.append(container);
-    return header;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../main":"1SICI"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"6pXtL":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getPageContainer", ()=>getPageContainer);
-function getPageContainer() {
-    const main = document.createElement("main");
-    main.classList.add("page-container");
-    return main;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsI8R":[function(require,module,exports) {
-module.exports = require("eb43698340671473")(require("e9bb0cab49414036").getBundleURL("10Mjw") + "main.00ff3c8c.js" + "?" + Date.now()).catch((err)=>{
-    delete module.bundle.cache[module.id];
-    throw err;
-}).then(()=>module.bundle.root("5jeM2"));
-
-},{"eb43698340671473":"61B45","e9bb0cab49414036":"lgJ39"}],"61B45":[function(require,module,exports) {
-"use strict";
-var cacheLoader = require("ca2a84f7fa4a3bb0");
-module.exports = cacheLoader(function(bundle) {
-    return new Promise(function(resolve, reject) {
-        // Don't insert the same script twice (e.g. if it was already in the HTML)
-        var existingScripts = document.getElementsByTagName("script");
-        if ([].concat(existingScripts).some(function isCurrentBundle(script) {
-            return script.src === bundle;
-        })) {
-            resolve();
-            return;
-        }
-        var preloadLink = document.createElement("link");
-        preloadLink.href = bundle;
-        preloadLink.rel = "preload";
-        preloadLink.as = "script";
-        document.head.appendChild(preloadLink);
-        var script = document.createElement("script");
-        script.async = true;
-        script.type = "text/javascript";
-        script.src = bundle;
-        script.onerror = function(e) {
-            var error = new TypeError("Failed to fetch dynamically imported module: ".concat(bundle, ". Error: ").concat(e.message));
-            script.onerror = script.onload = null;
-            script.remove();
-            reject(error);
-        };
-        script.onload = function() {
-            script.onerror = script.onload = null;
-            resolve();
-        };
-        document.getElementsByTagName("head")[0].appendChild(script);
-    });
-});
-
-},{"ca2a84f7fa4a3bb0":"j49pS"}],"j49pS":[function(require,module,exports) {
-"use strict";
-var cachedBundles = {};
-var cachedPreloads = {};
-var cachedPrefetches = {};
-function getCache(type) {
-    switch(type){
-        case "preload":
-            return cachedPreloads;
-        case "prefetch":
-            return cachedPrefetches;
-        default:
-            return cachedBundles;
-    }
-}
-module.exports = function(loader, type) {
-    return function(bundle) {
-        var cache = getCache(type);
-        if (cache[bundle]) return cache[bundle];
-        return cache[bundle] = loader.apply(null, arguments).catch(function(e) {
-            delete cache[bundle];
-            throw e;
-        });
-    };
-};
-
-},{}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"adHFQ":[function(require,module,exports) {
-module.exports = require("5da56e93278844c")(require("8ca10d49fec08695").getBundleURL("10Mjw") + "catalog.bae1f746.js" + "?" + Date.now()).catch((err)=>{
-    delete module.bundle.cache[module.id];
-    throw err;
-}).then(()=>module.bundle.root("enWwp"));
-
-},{"5da56e93278844c":"61B45","8ca10d49fec08695":"lgJ39"}],"9L8T0":[function(require,module,exports) {
-module.exports = require("91805c960935cfb7")(require("1d7c6f7c056dc93b").getBundleURL("10Mjw") + "basket.690031ab.js" + "?" + Date.now()).catch((err)=>{
-    delete module.bundle.cache[module.id];
-    throw err;
-}).then(()=>module.bundle.root("ai5BV"));
-
-},{"91805c960935cfb7":"61B45","1d7c6f7c056dc93b":"lgJ39"}],"fuSlc":[function(require,module,exports) {
+},{"navigo":"fuSlc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/src/js/components/header.js":"iODzc","/src/js/components/pageContainer.js":"6pXtL","76e43f5098be4a51":"dsI8R","c7fcb629e5c1095b":"adHFQ","dd26f383febd9266":"9L8T0","17e44ed2f03d434c":"33L2L","f5ba9bb331db9114":"as4Qc","f1ed06dc22f0a59b":"6Z9YI"}],"fuSlc":[function(require,module,exports) {
 !function(t, n) {
     module.exports = n();
 }("undefined" != typeof self ? self : this, function() {
@@ -1338,12 +1155,221 @@ module.exports = require("91805c960935cfb7")(require("1d7c6f7c056dc93b").getBund
     }().default;
 });
 
-},{}],"33L2L":[function(require,module,exports) {
+},{}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"iODzc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getHeader", ()=>getHeader);
+var _main = require("/src/js/main");
+function getHeader() {
+    const header = document.createElement("header");
+    header.classList.add("header");
+    const container = document.createElement("div");
+    container.classList.add("container", "header__container");
+    const nav = document.createElement("nav");
+    nav.classList.add("navigation");
+    let link1 = document.createElement("a");
+    link1.href = "/";
+    link1.classList.add("btn");
+    link1.textContent = "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430";
+    link1.addEventListener("click", function(event) {
+        event.preventDefault();
+        (0, _main.router).navigate("/");
+    });
+    let link2 = document.createElement("a");
+    link2.href = "/catalog";
+    link2.classList.add("btn");
+    link2.textContent = "\u041A\u0430\u0442\u0430\u043B\u043E\u0433";
+    link2.addEventListener("click", function(event) {
+        event.preventDefault();
+        (0, _main.router).navigate("/catalog");
+    });
+    let link3 = document.createElement("a");
+    link3.href = "/basket";
+    link3.classList.add("btn");
+    link3.textContent = "\u041A\u043E\u0440\u0437\u0438\u043D\u0430";
+    link3.addEventListener("click", function(event) {
+        event.preventDefault();
+        (0, _main.router).navigate("/basket");
+    });
+    nav.append(link1, link2, link3);
+    container.append(nav);
+    header.append(container);
+    return header;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/src/js/main":"1SICI"}],"6pXtL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getPageContainer", ()=>getPageContainer);
+function getPageContainer() {
+    const main = document.createElement("main");
+    main.classList.add("page-container");
+    return main;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsI8R":[function(require,module,exports) {
+module.exports = require("eb43698340671473")(require("e9bb0cab49414036").getBundleURL("10Mjw") + "main.00ff3c8c.js" + "?" + Date.now()).catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root("5jeM2"));
+
+},{"eb43698340671473":"61B45","e9bb0cab49414036":"lgJ39"}],"61B45":[function(require,module,exports) {
+"use strict";
+var cacheLoader = require("ca2a84f7fa4a3bb0");
+module.exports = cacheLoader(function(bundle) {
+    return new Promise(function(resolve, reject) {
+        // Don't insert the same script twice (e.g. if it was already in the HTML)
+        var existingScripts = document.getElementsByTagName("script");
+        if ([].concat(existingScripts).some(function isCurrentBundle(script) {
+            return script.src === bundle;
+        })) {
+            resolve();
+            return;
+        }
+        var preloadLink = document.createElement("link");
+        preloadLink.href = bundle;
+        preloadLink.rel = "preload";
+        preloadLink.as = "script";
+        document.head.appendChild(preloadLink);
+        var script = document.createElement("script");
+        script.async = true;
+        script.type = "text/javascript";
+        script.src = bundle;
+        script.onerror = function(e) {
+            var error = new TypeError("Failed to fetch dynamically imported module: ".concat(bundle, ". Error: ").concat(e.message));
+            script.onerror = script.onload = null;
+            script.remove();
+            reject(error);
+        };
+        script.onload = function() {
+            script.onerror = script.onload = null;
+            resolve();
+        };
+        document.getElementsByTagName("head")[0].appendChild(script);
+    });
+});
+
+},{"ca2a84f7fa4a3bb0":"j49pS"}],"j49pS":[function(require,module,exports) {
+"use strict";
+var cachedBundles = {};
+var cachedPreloads = {};
+var cachedPrefetches = {};
+function getCache(type) {
+    switch(type){
+        case "preload":
+            return cachedPreloads;
+        case "prefetch":
+            return cachedPrefetches;
+        default:
+            return cachedBundles;
+    }
+}
+module.exports = function(loader, type) {
+    return function(bundle) {
+        var cache = getCache(type);
+        if (cache[bundle]) return cache[bundle];
+        return cache[bundle] = loader.apply(null, arguments).catch(function(e) {
+            delete cache[bundle];
+            throw e;
+        });
+    };
+};
+
+},{}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"adHFQ":[function(require,module,exports) {
+module.exports = require("5da56e93278844c")(require("8ca10d49fec08695").getBundleURL("10Mjw") + "catalog.bae1f746.js" + "?" + Date.now()).catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root("enWwp"));
+
+},{"5da56e93278844c":"61B45","8ca10d49fec08695":"lgJ39"}],"9L8T0":[function(require,module,exports) {
+module.exports = require("91805c960935cfb7")(require("1d7c6f7c056dc93b").getBundleURL("10Mjw") + "basket.690031ab.js" + "?" + Date.now()).catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root("ai5BV"));
+
+},{"91805c960935cfb7":"61B45","1d7c6f7c056dc93b":"lgJ39"}],"33L2L":[function(require,module,exports) {
 module.exports = require("b224caeb7caf0dc1")(require("8b283eaf5610e6e0").getBundleURL("10Mjw") + "product.32ff8da9.js" + "?" + Date.now()).catch((err)=>{
     delete module.bundle.cache[module.id];
     throw err;
 }).then(()=>module.bundle.root("ajSHU"));
 
-},{"b224caeb7caf0dc1":"61B45","8b283eaf5610e6e0":"lgJ39"}]},["j2YDk","1SICI"], "1SICI", "parcelRequirecdf1")
+},{"b224caeb7caf0dc1":"61B45","8b283eaf5610e6e0":"lgJ39"}],"as4Qc":[function(require,module,exports) {
+module.exports = require("e2aba926f440b8e7")(require("4fa11b962a6e09a0").getBundleURL("10Mjw") + "order.16121d68.js" + "?" + Date.now()).catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root("gi2Xn"));
+
+},{"e2aba926f440b8e7":"61B45","4fa11b962a6e09a0":"lgJ39"}],"6Z9YI":[function(require,module,exports) {
+module.exports = require("961e76dcd1c2bc86")(require("64885bf620b971f5").getBundleURL("10Mjw") + "notFound.4f16eca9.js" + "?" + Date.now()).catch((err)=>{
+    delete module.bundle.cache[module.id];
+    throw err;
+}).then(()=>module.bundle.root("eTtiY"));
+
+},{"961e76dcd1c2bc86":"61B45","64885bf620b971f5":"lgJ39"}]},["j2YDk","1SICI"], "1SICI", "parcelRequirecdf1")
 
 //# sourceMappingURL=index.18dbc454.js.map
