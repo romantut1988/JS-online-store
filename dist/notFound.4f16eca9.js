@@ -587,7 +587,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getNotFoundPage", ()=>getNotFoundPage);
-var _mainTitleJs = require("/src/js/components/mainTitle.js");
+var _mainTitleJs = require("/src/js/components/mainTitle/mainTitle.js");
 function getNotFoundPage() {
     const page = document.createElement("div");
     page.classList.add("page", "catalog-page", "container");
@@ -596,10 +596,11 @@ function getNotFoundPage() {
     return page;
 }
 
-},{"/src/js/components/mainTitle.js":"1BNwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1BNwr":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/src/js/components/mainTitle/mainTitle.js":"ki5if"}],"ki5if":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getMainTitle", ()=>getMainTitle);
+var _mainTitleCss = require("./mainTitle.css");
 function getMainTitle(text) {
     const title = document.createElement("h1");
     title.classList.add("main-title");
@@ -607,6 +608,6 @@ function getMainTitle(text) {
     return title;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["43lFp"], null, "parcelRequirecdf1")
+},{"./mainTitle.css":"8xezA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8xezA":[function() {},{}]},["43lFp"], null, "parcelRequirecdf1")
 
 //# sourceMappingURL=notFound.4f16eca9.js.map

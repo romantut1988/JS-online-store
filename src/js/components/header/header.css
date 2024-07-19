@@ -1,0 +1,11 @@
+.header {
+    background-color: white;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
