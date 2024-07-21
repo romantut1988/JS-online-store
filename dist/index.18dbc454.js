@@ -1388,6 +1388,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getHeader", ()=>getHeader);
 var _main = require("/src/js/main");
+var _navigationLinkJs = require("/src/js/components/navigationLink/navigationLink.js");
 var _headerCss = require("./header.css");
 function getHeader() {
     const header = document.createElement("header");
@@ -1395,38 +1396,35 @@ function getHeader() {
     const container = document.createElement("div");
     container.classList.add("container", "header__container");
     const nav = document.createElement("nav");
-    nav.classList.add("navigation");
-    let link1 = document.createElement("a");
-    link1.href = "/";
-    link1.classList.add("btn");
-    link1.textContent = "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430";
-    link1.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/");
-    });
-    let link2 = document.createElement("a");
-    link2.href = "/catalog";
-    link2.classList.add("btn");
-    link2.textContent = "\u041A\u0430\u0442\u0430\u043B\u043E\u0433";
-    link2.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/catalog");
-    });
-    let link3 = document.createElement("a");
-    link3.href = "/basket";
-    link3.classList.add("btn");
-    link3.textContent = "\u041A\u043E\u0440\u0437\u0438\u043D\u0430";
-    link3.addEventListener("click", function(event) {
-        event.preventDefault();
-        (0, _main.router).navigate("/basket");
-    });
+    nav.classList.add("header__navigation");
+    let link1 = (0, _navigationLinkJs.getNavigationLink)("/", "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430");
+    let link2 = (0, _navigationLinkJs.getNavigationLink)("/catalog", "\u041A\u0430\u0442\u0430\u043B\u043E\u0433");
+    let link3 = (0, _navigationLinkJs.getNavigationLink)("/basket", "\u041A\u043E\u0440\u0437\u0438\u043D\u0430");
     nav.append(link1, link2, link3);
     container.append(nav);
     header.append(container);
     return header;
 }
 
-},{"/src/js/main":"1SICI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./header.css":"39x7f"}],"39x7f":[function() {},{}],"ht0nH":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./header.css":"39x7f","/src/js/components/navigationLink/navigationLink.js":"9DXZC","/src/js/main":"1SICI"}],"39x7f":[function() {},{}],"9DXZC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getNavigationLink", ()=>getNavigationLink);
+var _main = require("/src/js/main");
+var _navigationLinkCss = require("./navigationLink.css");
+function getNavigationLink(path, title = "") {
+    let link = document.createElement("a");
+    link.href = path;
+    link.classList.add("btn");
+    link.textContent = title;
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        (0, _main.router).navigate(path);
+    });
+    return link;
+}
+
+},{"/src/js/main":"1SICI","./navigationLink.css":"arnVZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"arnVZ":[function() {},{}],"ht0nH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getPageContainer", ()=>getPageContainer);

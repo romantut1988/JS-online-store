@@ -1,4 +1,5 @@
 import { router } from "/src/js/main"
+import { getNavigationLink } from "/src/js/components/navigationLink/navigationLink.js"
 import "./header.css"
 
 export function getHeader() {
@@ -9,36 +10,11 @@ export function getHeader() {
     container.classList.add("container", "header__container")
 
     const nav = document.createElement("nav")
-    nav.classList.add("navigation")
+    nav.classList.add("header__navigation")
 
-    let link1 = document.createElement("a")
-    link1.href = "/"
-    link1.classList.add("btn")
-    link1.textContent = "Главная страница"
-    link1.addEventListener("click", function (event) {
-        event.preventDefault()
-        router.navigate('/');
-    })
-
-    let link2 = document.createElement("a")
-    link2.href = "/catalog"
-    link2.classList.add("btn")
-    link2.textContent = "Каталог"
-
-    link2.addEventListener("click", function (event) {
-        event.preventDefault()
-        router.navigate('/catalog');
-    })
-
-    let link3 = document.createElement("a")
-    link3.href = "/basket"
-    link3.classList.add("btn")
-    link3.textContent = "Корзина"
-
-    link3.addEventListener("click", function (event) {
-        event.preventDefault()
-        router.navigate('/basket');
-    })
+    let link1 = getNavigationLink("/", "Главная страница")
+    let link2 = getNavigationLink("/catalog", "Каталог")
+    let link3 = getNavigationLink("/basket", "Корзина")
 
     nav.append(link1, link2, link3)
     container.append(nav)
